@@ -1,0 +1,113 @@
+.carousel {
+  width: 100vw;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
+  position: relative;
+  margin-top: 50px;
+}
+@keyframes fade-slide {
+  0% {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+  10% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  20% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  30% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+}
+.carousel-face {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  animation: fade-slide 10s infinite;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.carousel-face:nth-child(2) {
+  animation-delay: 2s;
+}
+.carousel-face:nth-child(3) {
+  animation-delay: 4s;
+}
+.carousel-face:nth-child(4) {
+  animation-delay: 6s;
+}
+.carousel-face:nth-child(5) {
+  animation-delay: 8s;
+}
+
+@media (min-width: 640px) {
+  .carousel {
+    height: 260px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel-container {
+    position: relative;
+    width: 320px;
+    margin: 50px auto 0 auto;
+    perspective: 1000px;
+    z-index: 300
+  }
+  .carousel {
+    position: absolute;
+    width: 300px;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: rotate360 30s infinite forwards linear;
+    margin-top: 0;
+  }
+  .carousel-face {
+    position: absolute;
+    width: 300px;
+    height: 187px;
+    top: 20px;
+    left: 10px;
+    right: 10px;
+    background-size: cover;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+    display: flex;
+    animation: none;
+    max-height: none;
+    max-height: none;
+    object-fit: fill;
+    opacity: 1;
+  }
+  .carousel-face:nth-child(1) {
+    transform: rotateY(0deg) translateZ(430px);
+  }
+  .carousel-face:nth-child(2) {
+    transform: rotateY(90deg) translateZ(430px);
+  }
+  .carousel-face:nth-child(3) {
+    transform: rotateY(180deg) translateZ(430px);
+  }
+  .carousel-face:nth-child(4) {
+    transform: rotateY(270deg) translateZ(430px);
+  }
+  @keyframes rotate360 {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(-360deg);
+    }
+  }
+}
